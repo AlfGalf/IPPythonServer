@@ -6,7 +6,7 @@ requires = [
 
 setup (
     name = "IP Python Webserver",
-    version = "0",
+    version = "0.1",
     install_require=requires
 )
 

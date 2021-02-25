@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify
 
-PORT = 8080
-
 app = Flask(__name__)
 
 
@@ -20,6 +18,9 @@ def image_input():
             'result': 'a'
         })
 
+@app.route('/')
+def test():
+    return "Hello World"
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
