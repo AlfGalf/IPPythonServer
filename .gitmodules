@@ -1,0 +1,3 @@
+[submodule "IPOpenCVModel"]
+	path = IPOpenCVModel
+	url = https://github.com/AlfGalf/IPOpenCVModel.git
