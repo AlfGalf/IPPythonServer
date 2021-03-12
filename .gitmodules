@@ -1,3 +1,6 @@
 [submodule "IPOpenCVModel"]
 	path = IPOpenCVModel
 	url = https://github.com/AlfGalf/IPOpenCVModel.git
+[submodule "MLModel"]
+	path = MLModel
+	url = https://github.com/AlfGalf/MLModel.git
