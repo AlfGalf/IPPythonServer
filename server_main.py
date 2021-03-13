@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-from MLModel import process_image, label_func
+from MLModel import process_image
 from PIL import Image
+import io
 
 
 app = Flask(__name__)
@@ -9,13 +10,15 @@ app = Flask(__name__)
 def image_input():
 
     file = request.files.get('image', '')
-    print(file)
     img = Image.open(file.stream)
+    byteIO = io.BytesIO()
+    img.save(byteIO, format='PNG')
+    byteArr = byteIO.getvalue()
 
     return jsonify(
         {
             'msg': 'success',
-            'result': process_image.predict_image(img)
+            'result': process_image.predict_image(byteArr)
         })
 
 
