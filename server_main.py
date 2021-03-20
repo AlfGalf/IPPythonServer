@@ -1,22 +1,26 @@
 from flask import Flask, request, jsonify
+from MLModel import process_image
+from PIL import Image
+import io
+
 
 app = Flask(__name__)
-
 
 @app.route('/api/recieve_image', methods=["POST"])
 def image_input():
 
-    files = request.files.to_dict(flat=False)
-    print(files)
-    for i, file in enumerate(files):
-        print(file)
-        files[file][0].save(f'image-{i}.jpg')
+    file = request.files.get('image', '')
+    img = Image.open(file.stream)
+    byteIO = io.BytesIO()
+    img.save(byteIO, format='PNG')
+    byteArr = byteIO.getvalue()
 
     return jsonify(
         {
             'msg': 'success',
-            'result': 'a'
+            'result': process_image.predict_image(byteArr)
         })
+
 
 @app.route('/')
 def test():
