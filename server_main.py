@@ -8,7 +8,7 @@ import pathlib
 app = Flask(__name__)
 
 
-@app.route('/api/recieve_image', methods=["POST"])
+@app.route('/api/receive_image', methods=["POST"])
 def image_input():
     file = request.files.get('image', '')
     img = Image.open(file.stream)
